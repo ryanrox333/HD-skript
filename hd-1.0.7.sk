@@ -14,6 +14,7 @@ on join:
 
 
 command /hd [<text>] [<text>] [<text>]:
+	permission: hd.use
 	trigger:
 		if arg-1 is not set:
 			message "&bHolographic Displays (Skript Version)"
