@@ -68,3 +68,5 @@ command /hd [<text>] [<text>] [<text>]:
 				broadcast "&9[&bHD&9] &bDownload %{_text}% from here: https://github.com/ryanrox333/HD-skript/tree/master"
 			if text from "https://pastebin.com/raw/mYGKcmFy" is "1.0.7":
 				message "&9[&bHD&9] &bYou have the Latest version so you dont need to do this!"
+		Else:
+			message "&9[&bHD&9] &bUnknown Command! Use /hd help!"
