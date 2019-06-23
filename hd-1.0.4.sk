@@ -4,7 +4,7 @@ on script load:
 	broadcast "&aLoading all data!"
 	wait 1 second
 	broadcast "&bAll data was loaded!"
-	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.0.3":
+	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.0.4":
 		broadcast "&9[&bHD&9] &bYou don't have the latest version! Download it from our GitHub page!"
 
 
@@ -13,13 +13,14 @@ command /hd [<text>] [<text>] [<text>]:
 		if arg-1 is not set:
 			message "&bHolographic Displays (Skript Version)"
 			message "&9Made by: ryanrox333"
-			message "&9Version: &b1.0.3"
+			message "&9Version: &b1.0.4"
 			message "&bUse ""/hd help"" for commands!"
 		if arg-1 is "help":
-			message "&bHD - (1.0.3)"
+			message "&bHD - (1.0.4)"
 			message "&b/hd create &9- &bCreate a Hologram!"
 			message "&b/hd delete &9- &bDelete a Hologram!"
 			message "&b/hd list &9- &bList all Holograms!"
+			message "&b/hd download &9- &bDownload the new updates!"
 		if arg-1 is "create":
 			if arg-2 is not set:
 				if arg-3 is not set:
@@ -55,3 +56,9 @@ command /hd [<text>] [<text>] [<text>]:
 		if arg-1 is "list":
 			message "&9[&bHD&9]"
 			message "%{hololist::*}%"
+		if arg-1 is "download":
+			if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.0.4":
+				set {_text} to text from "https://pastebin.com/raw/mYGKcmFy"
+				broadcast "&9[&bHD&9] &bDownload %{_text}% from here: https://github.com/ryanrox333/HD-skript/tree/master"
+			if text from "https://pastebin.com/raw/mYGKcmFy" is "1.0.4":
+				message "&9[&bHD&9] &bYou have the Latest version so you dont need to do this!"
