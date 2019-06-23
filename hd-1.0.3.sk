@@ -1,0 +1,57 @@
+on script load:
+	wait 0.1 seconds
+	broadcast "&bHolographic Displays (Skript Test)"
+	broadcast "&aLoading all data!"
+	wait 1 second
+	broadcast "&bAll data was loaded!"
+	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.0.3":
+		broadcast "&9[&bHD&9] &bYou don't have the latest version! Download it from our GitHub page!"
+
+
+command /hd [<text>] [<text>] [<text>]:
+	trigger:
+		if arg-1 is not set:
+			message "&bHolographic Displays (Skript Version)"
+			message "&9Made by: ryanrox333"
+			message "&9Version: &b1.0.3"
+			message "&bUse ""/hd help"" for commands!"
+		if arg-1 is "help":
+			message "&bHD - (1.0.3)"
+			message "&b/hd create &9- &bCreate a Hologram!"
+			message "&b/hd delete &9- &bDelete a Hologram!"
+			message "&b/hd list &9- &bList all Holograms!"
+		if arg-1 is "create":
+			if arg-2 is not set:
+				if arg-3 is not set:
+					message "&cUse /hd create <Name> <Text> [Use "";"" to make a new line!]"
+					stop
+			if arg-2 is set:
+				if arg-3 is not set:
+					message "&cUse /hd create <Name> <Text> [Use "";"" to make a new line!]"
+					stop
+			if arg-2 is set:
+				if arg-3 is set:
+					message "&9[&bHD&9] &bCreated a hologram named %arg-2%!"
+					set {_colorcodes} to "%arg-3%"
+					replace all "&" with "§" in {_colorcodes}
+					create holo object "%{_colorcodes}%" with id "%arg-2%" at block above player
+					wait 0.1 seconds
+					clear {_colorcodes}
+					add arg-2 to {hololist::*}
+					stop
+		if arg-1 is "delete":
+			if arg-2 is not set:
+				message "&cUse /hd delete <Name>"
+				stop
+			if arg-2 is set:
+				if {hololist::*} contains "%arg-2%":
+					delete holo object "%arg-2%"
+					message "&9[&bHD&9] &bDeleted %arg-2%!"
+					remove arg-2 from {hololist::*}
+					stop
+				if {hololist::*} does not contain "%arg-2%":
+					message "&cThis is not a valid Hologram name!"
+					stop
+		if arg-1 is "list":
+			message "&9[&bHD&9]"
+			message "%{hololist::*}%"
