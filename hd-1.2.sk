@@ -31,6 +31,7 @@ command /hd [<text>] [<text>] [<text>]:
 			message "&bHD - (1.2)"
 			message "&b/hd create &9- &bCreate a Hologram!"
 			message "&b/hd delete &9- &bDelete a Hologram!"
+			message "&b/hd editholo &9- &bChange the text on your hologram!"
 			message "&b/hd list &9- &bList all Holograms!"
 			message "&b/hd download &9- &bDownload the new updates!"
 		if arg-1 is "create":
@@ -76,14 +77,27 @@ command /hd [<text>] [<text>] [<text>]:
 				message "&9[&bHD&9] &bDownload %{_text}% from here: <link:https://github.com/ryanrox333/HD-skript/tree/master>https://github.com/ryanrox333/HD-skript/tree/master"
 			if text from "https://pastebin.com/raw/mYGKcmFy" is "1.2":
 				message "&9[&bHD&9] &bYou have the Latest version so you dont need to do this!"
+		if arg-1 is "editholo":
+			if arg-2 is not set:
+				message "&cUse /hd editholo <Name> <New Text>"
+			if arg-2 is set:
+				if arg-3 is set:
+					if {hololist::*} contains "%arg-2%":
+						set {text.%arg-2%} to "%arg-3%"
+						message "&9[&bHD&9] &b%arg-2%'s text has been changed!"
+						stop
+					if {hololist::*} does not contain "%arg-2%":
+						message "&cThis is not a valid Hologram name!"
+						stop
 		Else:
 			if arg-1 is set:
 				if arg-1 is not "create":
 					if arg-1 is not "delete":
 						if arg-1 is not "list":
 							if arg-1 is not "download":
-								if arg-1 is not "help": 
-									message "&9[&bHD&9] &bUnknown Command! Use /hd help!"
+								if arg-1 is not "help":
+									if arg-1 is not "editholo":
+										message "&9[&bHD&9] &bUnknown Command! Use /hd help!"
 
 
 every 5 seconds:
