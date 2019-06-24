@@ -7,28 +7,15 @@ on script load:
 	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.1":
 		set {_text} to text from "https://pastebin.com/raw/mYGKcmFy"
 		broadcast "&9[&bHD&9] &bYou don't have the latest version (%{_text}%)! Download it from our GitHub page!"
+	set {hdskript} to "enabled"
+
+on script unload:	
+	clear {hdskript}
 
 on join:
 	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.1":
 		set {_text} to text from "https://pastebin.com/raw/mYGKcmFy"
 		message "&9[&bHD&9] &bYou don't have the latest version (%{_text}%)! Download it from our GitHub page!"
-
-on join:
-	if {database.setup} is not set:
-		if player's group is "owner":
-			wait 2 seconds
-			message "&9[&bHD&9] &a&lWELCOME TO SETUP FOR HD-SKRIPT 1.1.1"
-			wait 1 second
-			message "&aPlease enter database name for us to connect to!"
-			set {database.chat.%player%} to "true"
-
-on chat:
-	if {database.chat.%player%} is set:
-		cancel event
-		message "&9[&bHD&9] &bThank you for downloading HD-SKRIPT 1.1.1"
-		set {database} to "%message%"
-		clear {database.chat.%player%}
-		set {database.setup} to "done"
 
 
 command /hd [<text>] [<text>] [<text>]:
@@ -57,7 +44,7 @@ command /hd [<text>] [<text>] [<text>]:
 					stop
 			if arg-2 is set:
 				if arg-3 is set:
-					if {hololist::*} does not contain "%arg-2%":
+					if {hololist::*} does not contain arg-2:
 						message "&9[&bHD&9] &bCreated a hologram named %arg-2%!"
 						set {_colorcodes} to "%arg-3%"
 						replace all "&" with "§" in {_colorcodes}
@@ -66,7 +53,7 @@ command /hd [<text>] [<text>] [<text>]:
 						clear {_colorcodes}
 						add arg-2 to {hololist::*}
 						stop
-					if {hololist::*} contains "%arg-2%":
+					if {hololist::*} contains arg-2:
 						message "&9[&bHD&9] &bThis is already a hologram!"
 		if arg-1 is "delete":
 			if arg-2 is not set:
