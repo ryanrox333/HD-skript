@@ -52,24 +52,24 @@ command /hd [<text>] [<text>] [<text>]:
 					create holo object "%{_colorcodes}%" with id "%arg-2%" at block above player
 					wait 0.1 seconds
 					clear {_colorcodes}
-					add arg-2 to {_hololist::*}
+					add arg-2 to {hololist::*}
 					stop
 		if arg-1 is "delete":
 			if arg-2 is not set:
 				message "&cUse /hd delete <Name>"
 				stop
 			if arg-2 is set:
-				if {_hololist::*} contains "%arg-2%":
+				if {hololist::*} contains "%arg-2%":
 					delete holo object "%arg-2%"
 					message "&9[&bHD&9] &bDeleted %arg-2%!"
-					remove arg-2 from {_hololist::*}
+					remove arg-2 from {hololist::*}
 					stop
-				if {_hololist::*} does not contain "%arg-2%":
+				if {hololist::*} does not contain "%arg-2%":
 					message "&cThis is not a valid Hologram name!"
 					stop
 		if arg-1 is "list":
 			message "&9[&bHD&9]"
-			message "%{_hololist::*}%"
+			message "%{hololist::*}%"
 		if arg-1 is "download":
 			if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.2":
 				set {_text} to text from "https://pastebin.com/raw/mYGKcmFy"
