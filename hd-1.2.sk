@@ -87,7 +87,7 @@ command /hd [<text>] [<text>] [<text>]:
 
 
 every 5 seconds:
-	loop {_hololist::*}:
-		delete holo object "%{_hololist::*}%"
+	loop {hololist::*}:
+		delete holo object "%loop-value%"
 		wait 0.1 seconds
-		create holo object "%{text.%{_hololist::*}%}%" with id "%{_hololist::*}%" at {location.%{_hololist::*}%}
+		create holo object "%{text.%loop-value%}%" with id "%loop-value%" at {location.%loop-value%}
