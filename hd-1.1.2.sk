@@ -82,7 +82,8 @@ command /hd [<text>] [<text>] [<text>]:
 					if arg-1 is not "delete":
 						if arg-1 is not "list":
 							if arg-1 is not "download":
-								if arg-1 is not "help": message "&9[&bHD&9] &bUnknown Command! Use /hd help!"
+								if arg-1 is not "help": 
+									message "&9[&bHD&9] &bUnknown Command! Use /hd help!"
 
 
 every 5 seconds:
