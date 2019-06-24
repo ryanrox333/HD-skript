@@ -44,17 +44,14 @@ command /hd [<text>] [<text>] [<text>]:
 					stop
 			if arg-2 is set:
 				if arg-3 is set:
-					if {hololist::*} does not contain arg-2:
-						message "&9[&bHD&9] &bCreated a hologram named %arg-2%!"
-						set {_colorcodes} to "%arg-3%"
-						replace all "&" with "§" in {_colorcodes}
-						create holo object "%{_colorcodes}%" with id "%arg-2%" at block above player
-						wait 0.1 seconds
-						clear {_colorcodes}
-						add arg-2 to {hololist::*}
-						stop
-					if {hololist::*} contains arg-2:
-						message "&9[&bHD&9] &bThis is already a hologram!"
+					message "&9[&bHD&9] &bCreated a hologram named %arg-2%!"
+					set {_colorcodes} to "%arg-3%"
+					replace all "&" with "§" in {_colorcodes}
+					create holo object "%{_colorcodes}%" with id "%arg-2%" at block above player
+					wait 0.1 seconds
+					clear {_colorcodes}
+					add arg-2 to {hololist::*}
+					stop
 		if arg-1 is "delete":
 			if arg-2 is not set:
 				message "&cUse /hd delete <Name>"
