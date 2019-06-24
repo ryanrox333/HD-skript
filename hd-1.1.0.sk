@@ -4,11 +4,12 @@ on script load:
 	broadcast "&aLoading all data!"
 	wait 1 second
 	broadcast "&bAll data was loaded!"
-	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.0":
+	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.1":
+		set {_text} to text from "https://pastebin.com/raw/mYGKcmFy"
 		broadcast "&9[&bHD&9] &bYou don't have the latest version (%{_text}%)! Download it from our GitHub page!"
 
 on join:
-	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.0":
+	if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.1":
 		set {_text} to text from "https://pastebin.com/raw/mYGKcmFy"
 		message "&9[&bHD&9] &bYou don't have the latest version (%{_text}%)! Download it from our GitHub page!"
 
@@ -16,7 +17,7 @@ on join:
 	if {database.setup} is not set:
 		if player's group is "owner":
 			wait 2 seconds
-			message "&9[&bHD&9] &a&lWELCOME TO SETUP FOR HD-SKRIPT 1.1.0"
+			message "&9[&bHD&9] &a&lWELCOME TO SETUP FOR HD-SKRIPT 1.1.1"
 			wait 1 second
 			message "&aPlease enter database name for us to connect to!"
 			set {database.chat.%player%} to "true"
@@ -24,7 +25,7 @@ on join:
 on chat:
 	if {database.chat.%player%} is set:
 		cancel event
-		message "&9[&bHD&9] &bThank you for downloading HD-SKRIPT 1.1.0"
+		message "&9[&bHD&9] &bThank you for downloading HD-SKRIPT 1.1.1"
 		set {database} to "%message%"
 		clear {database.chat.%player%}
 		set {database.setup} to "done"
@@ -36,11 +37,11 @@ command /hd [<text>] [<text>] [<text>]:
 		if arg-1 is not set:
 			message "&bHolographic Displays (Skript Version)"
 			message "&9Made by: ryanrox333"
-			message "&9Version: &b1.1.0"
+			message "&9Version: &b1.1.1"
 			message "&9Database: &b%{database}%"
 			message "&bUse ""/hd help"" for commands!"
 		if arg-1 is "help":
-			message "&bHD - (1.1.0)"
+			message "&bHD - (1.1.1)"
 			message "&b/hd create &9- &bCreate a Hologram!"
 			message "&b/hd delete &9- &bDelete a Hologram!"
 			message "&b/hd list &9- &bList all Holograms!"
@@ -56,14 +57,17 @@ command /hd [<text>] [<text>] [<text>]:
 					stop
 			if arg-2 is set:
 				if arg-3 is set:
-					message "&9[&bHD&9] &bCreated a hologram named %arg-2%!"
-					set {_colorcodes} to "%arg-3%"
-					replace all "&" with "§" in {_colorcodes}
-					create holo object "%{_colorcodes}%" with id "%arg-2%" at block above player
-					wait 0.1 seconds
-					clear {_colorcodes}
-					add arg-2 to {hololist::*}
-					stop
+					if {hololist::*} does not contain "%arg-2%":
+						message "&9[&bHD&9] &bCreated a hologram named %arg-2%!"
+						set {_colorcodes} to "%arg-3%"
+						replace all "&" with "§" in {_colorcodes}
+						create holo object "%{_colorcodes}%" with id "%arg-2%" at block above player
+						wait 0.1 seconds
+						clear {_colorcodes}
+						add arg-2 to {hololist::*}
+						stop
+					if {hololist::*} contains "%arg-2%":
+						message "&9[&bHD&9] &bThis is already a hologram!"
 		if arg-1 is "delete":
 			if arg-2 is not set:
 				message "&cUse /hd delete <Name>"
@@ -81,10 +85,10 @@ command /hd [<text>] [<text>] [<text>]:
 			message "&9[&bHD&9]"
 			message "%{hololist::*}%"
 		if arg-1 is "download":
-			if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.0":
+			if text from "https://pastebin.com/raw/mYGKcmFy" is not "1.1.1":
 				set {_text} to text from "https://pastebin.com/raw/mYGKcmFy"
 				message "&9[&bHD&9] &bDownload %{_text}% from here: https://github.com/ryanrox333/HD-skript/tree/master"
-			if text from "https://pastebin.com/raw/mYGKcmFy" is "1.1.0":
+			if text from "https://pastebin.com/raw/mYGKcmFy" is "1.1.1":
 				message "&9[&bHD&9] &bYou have the Latest version so you dont need to do this!"
 		Else:
 			if arg-1 is set:
