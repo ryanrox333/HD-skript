@@ -105,3 +105,6 @@ every 5 seconds:
 		delete holo object "%loop-value%"
 		wait 0.1 seconds
 		create holo object "%{text.%loop-value%}%" with id "%loop-value%" at {location.%loop-value%}
+
+
+
