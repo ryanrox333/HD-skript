@@ -1,16 +1,19 @@
-# HD-skript
-HD Skript (Minecraft)
-Version: 1.0.3
+# Holograms
+Create floating text for your minecraft server!
 
+# Dependecies
 
-This skript is a remake of the Famous Holographic Displays!
+1. Skript
+2. SkRayfall
+3. SkQuery
+4. Skellett
 
-# 0.9.0
-This was early stages of the skript when it was in testing!
+# Working Versions
 
-# 1.0.X
-When i started to release updates for this skript!
+The versions that work for this are:
 
-# Comming Soon!
+Skript-dev28
 
-1.1.X: This will fix some bugs with the holographs! With a database :D!
+# Questions?
+
+You can email me @ ryanrox333@gmail.com
