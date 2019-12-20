@@ -19,3 +19,12 @@ Skript-dev28
 You can email me @ ryanrox333@gmail.com
 
 ![macstadium](https://github.com/ryanrox333/HD-skript/blob/master/F530333A-AF38-46BA-A603-FC82A87DACF2.png)
+
+# What is MacStadium?
+MacStadium is a paid service for developers all over!
+
+Mac Minis start at $79/month
+
+Buy one today!
+
+https://www.macstadium.com
